@@ -41,10 +41,10 @@ header{text-align:center}
 .av{position:relative;width:200px;height:200px;margin:0 auto;animation:pop .8s var(--ease) .1s backwards}
 .ring{position:absolute;inset:0;width:100%;height:100%;fill:#fff;font:800 15px 'Bricolage Grotesque',system-ui,sans-serif;animation:spin 16s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.pic{position:absolute;inset:36px;border-radius:50%;overflow:hidden;border:3px solid var(--ink);background:var(--c2);box-shadow:5px 5px 0 var(--ink);transition:transform .4s var(--ease)}
+.pic{position:absolute;inset:36px;border-radius:50%;overflow:hidden;border:3px solid var(--ink);background:#0a0a0a;box-shadow:5px 5px 0 var(--ink);transition:transform .4s var(--ease)}
 .av:hover .pic{transform:rotate(-6deg) scale(1.06)}
 .pic img{width:100%;height:100%;object-fit:cover;display:block}
-.ini{width:100%;height:100%;display:grid;place-items:center;font-size:44px;font-weight:800;color:var(--ink)}
+.ini{width:100%;height:100%;display:grid;place-items:center;font-size:44px;font-weight:800;color:var(--ink);background:var(--c2)}
 
 h1{margin-top:10px;font-size:34px;font-weight:800;letter-spacing:-.02em;animation:pop .7s var(--ease) .22s backwards}
 .ver{width:26px;height:26px;vertical-align:-3px;margin-left:6px}
@@ -175,11 +175,11 @@ const CONFIG = {
   const icon = n => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${I[n] || I.web}</svg>`;
 
   // nama + centang
-  $('#name').innerHTML = C.nama + (C.verified ? '<svg class="ver" viewBox="0 0 24 24" aria-label="Terverifikasi"><circle cx="12" cy="12" r="10.5" fill="var(--c2)" stroke="var(--ink)" stroke-width="2"/><path d="M7.2 12.6l3.2 3.2 6.4-6.6" fill="none" stroke="var(--ink)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>' : '');
+    $('#name').innerHTML = C.nama + (C.verified ? '<svg class="ver" viewBox="0 0 24 24" aria-label="Terverifikasi"><circle cx="12" cy="12" r="10.5" fill="red" stroke="var(--ink)" stroke-width="2"/><path d="M7.2 12.6l3.2 3.2 6.4-6.6" fill="none" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>' : '');
 
   // foto / inisial
   const pic = $('#pic');
-  const inisial = () => { pic.innerHTML = '<div class="ini"></div>'; pic.firstChild.textContent = C.nama.split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase(); };
+  const inisial = () => { pic.innerHTML = '<div class="ini"></div>'; };
   if (C.foto) { const im = new Image(); im.alt = C.nama; im.onerror = inisial; im.src = C.foto; pic.append(im); } else inisial();
 
   // teks berputar
